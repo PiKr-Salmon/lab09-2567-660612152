@@ -33,7 +33,7 @@ export default function Home() {
     const newTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(newTasks);
     setCountadd(addCount-1);
-    setCountCom(completedCount-1);
+    if(completedCount>=1)setCountCom(completedCount-1);
   };
 
   // Define the function with proper type
