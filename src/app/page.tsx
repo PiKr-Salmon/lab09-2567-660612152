@@ -10,11 +10,9 @@ import { useState } from "react";
 export default function Home() {
   // Define the interface of task-item object
   interface TaskItem {
-    id: string,
-    title: string,
-    completed: boolean,
-    
-  }
+    id: string;
+    title: string;
+    completed: boolean;  }
 
   const [completedCount,setCountCom] = useState(0)
   const [addCount,setCountadd] = useState(0)
@@ -34,8 +32,8 @@ export default function Home() {
   const deleteTask = (taskId :string) => {
     const newTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(newTasks);
-    setCountadd(0);
-    setCountCom(0);
+    setCountadd(addCount-1);
+    setCountCom(completedCount-1);
   };
 
   // Define the function with proper type
@@ -44,11 +42,11 @@ export default function Home() {
     //So objects within an object will be copied too
     const newTasks = structuredClone(tasks);
     //search for a task based on condition
-    const task : any = newTasks.find((x) => x.id === taskId);
-    task.completed =!task.completed;
+    let task : any = newTasks.find((x) => x.id === taskId);
+    task.completed =! task.completed;
     setTasks(newTasks);
     if(task.completed) setCountCom(completedCount+1);
-    
+    else setCountCom(completedCount-1);
   };
 
   return (

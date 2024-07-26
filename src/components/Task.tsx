@@ -21,6 +21,10 @@ export default function Task({
     deleteTaskFunc(id);
   };
 
+  const toggleDoneOnClick = () => {
+    toggleDoneTaskFunc(id);
+  };
+  
   return (
     <div className="d-flex p-3 gap-2 align-items-center border-bottom">
       {/*
@@ -29,10 +33,9 @@ export default function Task({
         But if task is not completed : 
         <span>{title}</span>
       */
-        
        }
       <span className={completed? "text-decoration-line-through" : ""}>{title}</span>
-      <button className="btn btn-success" onClick={toggleDoneTaskFunc}>Done</button>
+      <button className="btn btn-success" onClick={toggleDoneOnClick}>Done</button>
       <button className="btn btn-danger" onClick={deleteBtnOnClick}>
         Delete
       </button>
